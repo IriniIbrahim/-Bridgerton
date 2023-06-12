@@ -1,5 +1,11 @@
 {
+  
+	"scripts": {
+		"start": "webpack serve"
+	},
   "dependencies": {
+    "babel-loader": "^9.1.2",
+		"dat.gui": "^0.7.9",
     "three": "^0.153.0",
     "three.js": "^0.77.1"
   }
