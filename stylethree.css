@@ -24,6 +24,46 @@ p {
 	width: 50%;
 	margin-left: 20%;
 	/* margin-right: 50%; */
-	padding: 30px;
-	font-size: 1em;
+	padding: 70px;
+	font-size: 1.5em;
+	border-radius: 10px;
+}
+
+.anextpage {
+	position: absolute;
+	color: #fff;
+	text-align: center;
+	font-size: 2em;
+	margin-left: 250px;
+	margin-right: 250px;
+	margin-top: 10px;
+	top: 75%;
+	transform: translateY(-70%);
+	left: 0;
+	right: 0;
+	z-index: 99;
+	pointer-events: visiblePainted;
+	mix-blend-mode: overlay;
+	text-decoration: none;
+	border: #fff 5px solid;
+	cursor: pointer;
+}
+.abackpage {
+	position: absolute;
+	color: #fff;
+	text-align: center;
+	font-size: 2em;
+	margin-left: 250px;
+	margin-right: 250px;
+	margin-top: 10px;
+	top: 85%;
+	transform: translateY(-70%);
+	left: 0;
+	right: 0;
+	z-index: 99;
+	pointer-events: visiblePainted;
+	mix-blend-mode: overlay;
+	text-decoration: none;
+	border: #fff 5px solid;
+	cursor: pointer;
 }

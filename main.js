@@ -8,8 +8,14 @@ animate();
 
 function init() {
 	const paragraph = document.createElement('p');
-	paragraph.textContent = 'a combination of a historical truth which is to say that the past is more diverse than we tend to see on screen, and we tend to accept in our popular imagination. But it’s also a fictionalizing, asking what history might look like under certain different circumstances.';
+	paragraph.textContent = 'where the reason why bridgerton was success is because it challanged the norm? it speaks about inclusivity.';
+	const btn = document.createElement('a');
+	btn.href = "/about.html";
+	btn.textContent = "More info..."
+	btn.className = "anextpage";
 	document.body.appendChild(paragraph);
+	document.body.appendChild(btn);
+
 	camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
 	camera.position.z = 500;
 
@@ -39,7 +45,14 @@ function init() {
 	window.addEventListener('resize', onWindowResize);
 	const paragraph2 = document.createElement('p');
 	paragraph2.textContent = 'a combination of a historical truth which is to say that the past is more diverse than we tend to see on screen, and we tend to accept in our popular imagination. But it’s also a fictionalizing, asking what history might look like under certain different circumstances.';
+	const btn2 = document.createElement('a');
+	btn2.href = "/index.html";
+	btn2.textContent = "Main";
+	btn2.className = "abackpage";
+
 	document.body.appendChild(paragraph2);
+	document.body.appendChild(btn2);
+
 
 }
 
