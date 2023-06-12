@@ -1,6 +1,8 @@
 * 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+
+  @import url('https://fonts.googleapis.com/css2?family=Abel&family=Gochi+Hand&display=swap');
+
 
 * {
   box-sizing: border-box;
@@ -70,7 +72,8 @@ font-family: "poppins", sans-serif;
 }
 
 h1 {
-    font-family: "Abril Fatface";
+    font-family: 'Abel', sans-serif;
+font-family: 'Gochi Hand', cursive;
 }
 
 #section_2{
@@ -86,9 +89,9 @@ h1 {
   justify-content: center;
 }
 
-.grid-container {
+/* .grid-container {
   flex-direction: row;
-}
+} */
 .grid-container {
   display: flex;
   grid-template-rows: repeat(2, 1fr);
@@ -102,8 +105,10 @@ h1 {
   font-size: 28px;
   text-align: center;
 }
-.grid-item ul {
-  font-size: 16px;
+.grid-item {
+  font-family: 'Abel', sans-serif;
+font-family: 'Gochi Hand', cursive;
+font-size: 48px;
 }
 #section_3 {
   background-image: url(/img/wallpaperx.jpg);
