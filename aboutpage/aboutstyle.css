@@ -73,10 +73,10 @@ font-family: "poppins", sans-serif;
 
 h1 {
     font-family: 'Abel', sans-serif;
-font-family: 'Gochi Hand', cursive;
+
 }
 
-#section_2{
+#section_2 {
   height: 100vh;
   display: flex;
   justify-content: flex-start;
@@ -107,8 +107,7 @@ font-family: 'Gochi Hand', cursive;
 }
 .grid-item {
   font-family: 'Abel', sans-serif;
-font-family: 'Gochi Hand', cursive;
-font-size: 48px;
+font-size: 38px;
 }
 #section_3 {
   background-image: url(/img/wallpaperx.jpg);
@@ -133,4 +132,43 @@ font-size: 48px;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+#section_between {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; /* Adjust the height as needed */
+}
+
+
+
+h2 {
+    font-family: 'Abel', sans-serif;
+    font-size: 38px;
+}
+
+#section_4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height as needed */
+  background-image: url(/img/wallpaperx.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.final {
+  text-align: center;
+  font-size: 28px;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+h1 {
+  opacity: 0;
+  animation: fade-in 5s forwards;
 }
