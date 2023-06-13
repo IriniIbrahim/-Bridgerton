@@ -7,22 +7,14 @@ init();
 animate();
 
 function init() {
-	const paragraph = document.createElement('p');
-	paragraph.textContent = 'where the reason why bridgerton was success is because it challanged the norm? it speaks about inclusivity.';
-	const btn = document.createElement('a');
-	btn.href = "/about.html";
-	btn.textContent = "More info..."
-	btn.className = "anextpage";
-	document.body.appendChild(paragraph);
-	document.body.appendChild(btn);
-
-	camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
-	camera.position.z = 500;
+	const canvas = document.getElementById("canvas");
+	camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+	camera.position.z = 800;
 
 	scene = new THREE.Scene();
 
 	const texture = new THREE.TextureLoader().load('img/queensplit.jpg');
-	texture.colorSpace = THREE.SRGBColorSpace;
+	texture.encoding = THREE.sRGBEncoding; // Use lowercase 's' in 'sRGBEncoding'
 
 	const geometry = new THREE.BoxGeometry(250, 200, 250);
 	const material = new THREE.MeshBasicMaterial({ map: texture });
@@ -36,43 +28,165 @@ function init() {
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
-	renderer.setClearColor(0xffffff);
+	renderer.setClearColor(0xf0dfaf);
 	document.body.appendChild(renderer.domElement);
-	document.body.style.backgroundImage = "url('img/wallpaperx.jpg')";
-	document.body.style.backgroundSize = "cover";
-	document.body.style.backgroundRepeat = "no-repeat";
-	document.body.appendChild(renderer.domElement);
+
 	window.addEventListener('resize', onWindowResize);
-	const paragraph2 = document.createElement('p');
-	paragraph2.textContent = 'a combination of a historical truth which is to say that the past is more diverse than we tend to see on screen, and we tend to accept in our popular imagination. But it’s also a fictionalizing, asking what history might look like under certain different circumstances.';
-	const btn2 = document.createElement('a');
-	btn2.href = "/index.html";
-	btn2.textContent = "Main";
-	btn2.className = "abackpage";
-
-	document.body.appendChild(paragraph2);
-	document.body.appendChild(btn2);
-
-
 }
 
 function onWindowResize() {
-
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 
 	renderer.setSize(window.innerWidth, window.innerHeight);
-
 }
 
 function animate() {
-
 	requestAnimationFrame(animate);
 
 	mesh.rotation.x += 0.005;
 	mesh.rotation.y += 0.01;
 
 	renderer.render(scene, camera);
+}
+// for audio
+const btn = document.querySelector(".btn");
+const audio = document.querySelector("audio");
+const visualizer = document.querySelector(".visualizer");
 
+btn.addEventListener("click", (e) => {
+	ctx.resume();
+	audio.paused ? audio.play() : audio.pause();
+	btn.classList.toggle("btn-play");
+	btn.classList.toggle("btn-pause");
+});
+
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+const ctx = new window.AudioContext();
+ctx.suspend();
+const analyser = ctx.createAnalyser();
+const source = ctx.createMediaElementSource(audio);
+source.connect(analyser);
+source.connect(ctx.destination);
+analyser.fftSize = 64;
+const bufferLength = analyser.frequencyBinCount;
+
+let dataArray = new Uint8Array(bufferLength);
+let elements = [];
+for (let i = 0; i < bufferLength; i++) {
+	const element = document.createElement("span");
+	element.classList.add("element");
+	elements.push(element);
+	visualizer.appendChild(element);
 }
 
+const clamp = (num, min, max) => {
+	if (num >= max) return max;
+	if (num <= min) return min;
+	return num;
+};
+
+const update = () => {
+	requestAnimationFrame(update);
+	analyser.getByteFrequencyData(dataArray);
+	for (let i = 0; i < bufferLength; i++) {
+		let item = dataArray[i];
+		item = item > 150 ? item / 1.5 : item * 1.5;
+		elements[i].style.transform = `rotateZ(${i * (360 / bufferLength)
+			}deg) translate(-50%, ${clamp(item, 100, 150)}px)`;
+	}
+};
+update();
+
+//for scroll animation
+
+AOS.init();
+
+// function scrollTrigger(selector, options = {}) {
+// 	let els = document.querySelectorAll(selector)
+// 	els = Array.from(els)
+// 	els.forEach(el => {
+// 		addObserver(el, options)
+// 	})
+// }
+
+// function addObserver(el, options) {
+// 	if (!('IntersectionObserver' in window)) {
+// 		if (options.cb) {
+// 			options.cb(el)
+// 		} else {
+// 			entry.target.classList.add('active')
+// 		}
+// 		return
+// 	}
+// 	let observer = new IntersectionObserver((entries, observer) => { //this takes a callback function which receives two arguments: the elemts list and the observer instance
+// 		entries.forEach(entry => {
+// 			if (entry.isIntersecting) {
+// 				if (options.cb) {
+// 					options.cb(el)
+// 				} else {
+// 					entry.target.classList.add('active')
+// 				}
+// 				observer.unobserve(entry.target)
+// 			}
+// 		})
+// 	}, options)
+// 	observer.observe(el)
+// }
+// // Example usages:
+// // scrollTrigger('.section_1')
+// // scrollTrigger('.section_2')
+// // scrollTrigger('.section_3')
+// // scrollTrigger('.section_4')
+// // scrollTrigger('.section_5')
+
+
+// // scrollTrigger('.section_2', {
+// // 	rootMargin: '-200px',
+// // })
+
+// scrollTrigger('.section_1', {
+// 	rootMargin: '-200px',
+// 	cb: function (el) {
+// 		el.innerText = 'Loading...'
+// 		setTimeout(() => {
+// 			el.innerText = 'Task Complete!'
+// 		}, 1000)
+// 	}
+// })
+// scrollTrigger('.section_2', {
+// 	rootMargin: '-200px',
+// 	cb: function (el) {
+// 		el.innerText = 'Loading...'
+// 		setTimeout(() => {
+// 			el.innerText = 'Task Complete!'
+// 		}, 1000)
+// 	}
+// })
+// scrollTrigger('.section_3', {
+// 	rootMargin: '-200px',
+// 	cb: function (el) {
+// 		el.innerText = 'Loading...'
+// 		setTimeout(() => {
+// 			el.innerText = 'Task Complete!'
+// 		}, 1000)
+// 	}
+// })
+// scrollTrigger('.section_4', {
+// 	rootMargin: '-200px',
+// 	cb: function (el) {
+// 		el.innerText = 'Loading...'
+// 		setTimeout(() => {
+// 			el.innerText = 'Task Complete!'
+// 		}, 1000)
+// 	}
+// })
+// scrollTrigger('.section_5', {
+// 	rootMargin: '-200px',
+// 	cb: function (el) {
+// 		el.innerText = 'Loading...'
+// 		setTimeout(() => {
+// 			el.innerText = 'Task Complete!'
+// 		}, 1000)
+// 	}
+// })
