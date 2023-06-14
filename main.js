@@ -1,3 +1,4 @@
+//for 3d
 import * as THREE from 'three';
 
 let camera, scene, renderer;
@@ -49,18 +50,17 @@ function animate() {
 
 	renderer.render(scene, camera);
 }
+
 // for audio
 const btn = document.querySelector(".btn");
 const audio = document.querySelector("audio");
 const visualizer = document.querySelector(".visualizer");
-
 btn.addEventListener("click", (e) => {
 	ctx.resume();
 	audio.paused ? audio.play() : audio.pause();
 	btn.classList.toggle("btn-play");
 	btn.classList.toggle("btn-pause");
 });
-
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 const ctx = new window.AudioContext();
 ctx.suspend();
@@ -70,7 +70,6 @@ source.connect(analyser);
 source.connect(ctx.destination);
 analyser.fftSize = 64;
 const bufferLength = analyser.frequencyBinCount;
-
 let dataArray = new Uint8Array(bufferLength);
 let elements = [];
 for (let i = 0; i < bufferLength; i++) {
@@ -79,13 +78,11 @@ for (let i = 0; i < bufferLength; i++) {
 	elements.push(element);
 	visualizer.appendChild(element);
 }
-
 const clamp = (num, min, max) => {
 	if (num >= max) return max;
 	if (num <= min) return min;
 	return num;
 };
-
 const update = () => {
 	requestAnimationFrame(update);
 	analyser.getByteFrequencyData(dataArray);
@@ -99,94 +96,4 @@ const update = () => {
 update();
 
 //for scroll animation
-
 AOS.init();
-
-// function scrollTrigger(selector, options = {}) {
-// 	let els = document.querySelectorAll(selector)
-// 	els = Array.from(els)
-// 	els.forEach(el => {
-// 		addObserver(el, options)
-// 	})
-// }
-
-// function addObserver(el, options) {
-// 	if (!('IntersectionObserver' in window)) {
-// 		if (options.cb) {
-// 			options.cb(el)
-// 		} else {
-// 			entry.target.classList.add('active')
-// 		}
-// 		return
-// 	}
-// 	let observer = new IntersectionObserver((entries, observer) => { //this takes a callback function which receives two arguments: the elemts list and the observer instance
-// 		entries.forEach(entry => {
-// 			if (entry.isIntersecting) {
-// 				if (options.cb) {
-// 					options.cb(el)
-// 				} else {
-// 					entry.target.classList.add('active')
-// 				}
-// 				observer.unobserve(entry.target)
-// 			}
-// 		})
-// 	}, options)
-// 	observer.observe(el)
-// }
-// // Example usages:
-// // scrollTrigger('.section_1')
-// // scrollTrigger('.section_2')
-// // scrollTrigger('.section_3')
-// // scrollTrigger('.section_4')
-// // scrollTrigger('.section_5')
-
-
-// // scrollTrigger('.section_2', {
-// // 	rootMargin: '-200px',
-// // })
-
-// scrollTrigger('.section_1', {
-// 	rootMargin: '-200px',
-// 	cb: function (el) {
-// 		el.innerText = 'Loading...'
-// 		setTimeout(() => {
-// 			el.innerText = 'Task Complete!'
-// 		}, 1000)
-// 	}
-// })
-// scrollTrigger('.section_2', {
-// 	rootMargin: '-200px',
-// 	cb: function (el) {
-// 		el.innerText = 'Loading...'
-// 		setTimeout(() => {
-// 			el.innerText = 'Task Complete!'
-// 		}, 1000)
-// 	}
-// })
-// scrollTrigger('.section_3', {
-// 	rootMargin: '-200px',
-// 	cb: function (el) {
-// 		el.innerText = 'Loading...'
-// 		setTimeout(() => {
-// 			el.innerText = 'Task Complete!'
-// 		}, 1000)
-// 	}
-// })
-// scrollTrigger('.section_4', {
-// 	rootMargin: '-200px',
-// 	cb: function (el) {
-// 		el.innerText = 'Loading...'
-// 		setTimeout(() => {
-// 			el.innerText = 'Task Complete!'
-// 		}, 1000)
-// 	}
-// })
-// scrollTrigger('.section_5', {
-// 	rootMargin: '-200px',
-// 	cb: function (el) {
-// 		el.innerText = 'Loading...'
-// 		setTimeout(() => {
-// 			el.innerText = 'Task Complete!'
-// 		}, 1000)
-// 	}
-// })
