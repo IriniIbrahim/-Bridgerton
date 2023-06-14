@@ -11,27 +11,20 @@ function init() {
 	const canvas = document.getElementById("canvas");
 	camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
 	camera.position.z = 800;
-
 	scene = new THREE.Scene();
-
 	const texture = new THREE.TextureLoader().load('img/queensplit.jpg');
-	texture.encoding = THREE.sRGBEncoding; // Use lowercase 's' in 'sRGBEncoding'
-
+	// texture.encoding = THREE.sRGBEncoding; // Use lowercase 's' in 'sRGBEncoding'
 	const geometry = new THREE.BoxGeometry(250, 200, 250);
 	const material = new THREE.MeshBasicMaterial({ map: texture });
-
 	mesh = new THREE.Mesh(geometry, material);
 	mesh.position.x = 10;
 	mesh.position.y = 20;
-
 	scene.add(mesh);
-
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	renderer.setClearColor(0xf0dfaf);
 	document.body.appendChild(renderer.domElement);
-
 	window.addEventListener('resize', onWindowResize);
 }
 
