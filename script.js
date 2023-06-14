@@ -1,4 +1,4 @@
-const cols = 3;
+const cols = 10;
 const main = document.getElementById('main');
 let parts = [];
 
