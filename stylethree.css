@@ -23,11 +23,16 @@ section {
 	justify-content: center;
 	align-items: center;
 }
-
+.Positioning {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+}
 #section_1 {
-	background-image: url(/img/wallpaperx.jpg);
+	/* background-image: url(/img/wallpaperx.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
+	background-color: #f0dfaf;
 }
 .section-container {
 	display: flex;
@@ -59,7 +64,9 @@ section {
 	flex-direction: column;
 	gap: 2rem;
 	width: 50%;
-	background-color: #f0dfaf;
+	background-image: url(/img/wallpaperx.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 	justify-content: center;
 	padding: 20px;
 	border-radius: 10px;
@@ -68,9 +75,12 @@ section {
 	animation: pulse;
 	animation-duration: 1s;
 }
-.container_left p {
+.container_left p,
+h1 {
 	font-family: "poppins", sans-serif;
 	text-align: center;
+	background-color: #ffffff65;
+	color: rgb(0, 0, 0);
 }
 
 h1,
@@ -87,10 +97,12 @@ h2 {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #f0dfaf;
+	background-image: url(/img/wallpaperx.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .gridtext {
-	background-color: #ee48903a;
-	color: white;
+	background-color: #ee489037;
 	font-size: 1em;
 	font-family: "Abel", sans-serif;
 	padding: 10px;
@@ -128,9 +140,10 @@ h2 {
 	animation-duration: 1s;
 }
 #section_3 {
-	background-image: url(/img/wallpaperx.jpg);
+	/* background-image: url(/img/wallpaperx.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
+	background-color: #f0dfaf;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -159,7 +172,8 @@ h2 {
 	justify-content: center;
 	align-items: center;
 	height: 20vh; /* Adjust the height as needed */
-	background-color: #f0dfaf;
+	background-color: #ee489037;
+	border-radius: 20px;
 }
 
 h2 {
@@ -176,6 +190,9 @@ h2 {
 	background-size: cover;
 }
 #section_5 {
+	background-image: url(/img/wallpaperx.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 	background-color: #f0dfaf;
 }
 .final {
@@ -269,7 +286,7 @@ h1 {
 }
 .play {
 	position: absolute;
-	top: 134%;
+	top: 33.5%;
 	left: 42.5%;
 	transform: translate(-50%, -50%);
 	width: 250px;
