@@ -13,7 +13,7 @@ function init() {
 	camera.position.z = 800;
 	scene = new THREE.Scene();
 	const texture = new THREE.TextureLoader().load('img/queensplit.jpg');
-	// texture.encoding = THREE.sRGBEncoding; // Use lowercase 's' in 'sRGBEncoding'
+	//texture.encoding = THREE.sRGBEncoding; // Use lowercase 's' in 'sRGBEncoding'
 	const geometry = new THREE.BoxGeometry(250, 200, 250);
 	const material = new THREE.MeshBasicMaterial({ map: texture });
 	mesh = new THREE.Mesh(geometry, material);
